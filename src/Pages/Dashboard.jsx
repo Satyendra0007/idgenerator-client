@@ -2,7 +2,7 @@ import React from 'react'
 import user from "../images/user.webp"
 import { useContext } from 'react'
 import { ContextStore } from '../store/ContextStore'
-import Card from '../Components/card'
+import Card from '../Components/Card'
 import banner from "../images/banner.jpeg"
 
 export default function Dashboard() {
