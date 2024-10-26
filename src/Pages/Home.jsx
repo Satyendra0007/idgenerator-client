@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Components/card'
+import Card from '../Components/Card'
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
