@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 export default function SignOut() {
 
   const navigate = useNavigate()
-  const { deleteFromLocalStorage } = useContext(ContextStore)
+  const { isLoggedIn, deleteFromLocalStorage } = useContext(ContextStore)
 
   useEffect(() => {
-    deleteFromLocalStorage()
-    navigate("/")
+    if (isLoggedIn) {
+      deleteFromLocalStorage()
+      navigate("/")
+    } else {
+      navigate("/login")
+    }
   }, [])
 
   return (

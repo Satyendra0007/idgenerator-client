@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm } from "react-hook-form"
@@ -14,10 +14,15 @@ import { sendPostRequest } from '../actions/serverActions';
 
 export default function Login() {
   const navigate = useNavigate()
-  const { saveToLocalStorage } = useContext(ContextStore)
+  const { isLoggedIn, saveToLocalStorage } = useContext(ContextStore)
   const { register, handleSubmit, watch, formState: { errors, isSubmiting } } = useForm()
   const [loading, setLoading] = useState(false)
   const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (isLoggedIn)
+      navigate("/dashboard")
+  }, [])
 
   const handleOnSubmit = async (data) => {
     setLoading(true)

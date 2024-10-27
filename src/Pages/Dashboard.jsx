@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import user from "../images/user.webp"
 import { useContext } from 'react'
 import { ContextStore } from '../store/ContextStore'
@@ -6,19 +6,26 @@ import Card from '../Components/Card'
 import banner from "../images/banner.jpeg"
 import { CiSaveDown1 } from "react-icons/ci";
 import domtoimage from 'dom-to-image';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Dashboard() {
 
-  const { userData } = useContext(ContextStore)
+  const { isLoggedIn, userData } = useContext(ContextStore)
   const cardRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn)
+      navigate("/")
+  }, [])
 
   const handleDownload = () => {
-    domtoimage.toPng(cardRef.current, { bgcolor: '#fff', quality: 0.95 })
+    domtoimage.toPng(cardRef.current, { bgcolor: '#fff', quality: 0.99, scale: 3, })
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
-        link.download = 'demo.png';
+        link.download = 'id-card.png';
         link.click();
       })
       .catch((error) => {

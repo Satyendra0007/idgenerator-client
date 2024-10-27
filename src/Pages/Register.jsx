@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaUser } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -19,7 +19,7 @@ import { ContextStore } from '../store/ContextStore'
 
 export default function Register() {
   const navigate = useNavigate()
-  const { saveToLocalStorage } = useContext(ContextStore)
+  const {isLoggedIn, saveToLocalStorage } = useContext(ContextStore)
   const { register, handleSubmit, watch, formState: { errors, isSubmiting } } = useForm()
   const [loading, setLoading] = useState(false)
   const [preview, setPreview] = useState(user)
@@ -62,6 +62,11 @@ export default function Register() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (isLoggedIn)
+      navigate("/dashboard")
+  }, [])
 
   return (
     <>

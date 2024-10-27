@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FaArrowRight } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from '../Components/Card';
+import { ContextStore } from '../store/ContextStore';
+
 
 export default function Home() {
+
+  const { isLoggedIn } = useContext(ContextStore)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoggedIn)
+      navigate("/dashboard")
+  }, [])
+
   return (
     <div className='py-20 container mx-auto md:flex md:max-w-5xl md:gap-x-16 md:h-[84vh] md:items-center' >
       <div className="content  space-y-6">
