@@ -117,7 +117,7 @@ export default function Register() {
                 <div className="input flex items-center gap-x-3 relative">
                   <label className='' htmlFor="password"><RiLockPasswordFill className='text-green-600' /></label>
                   <input className='outline-none rounded-md border-gray-400 bg-gray-100 w-full border-0 placeholder:text-blue-300 ' type={show.pass ? "text" : "password"} id='password' placeholder='Enter  Password' {...register("password", { required: { value: true, message: "Password is required " }, minLength: { value: 8, message: "Password must have 8 characters" } })} />
-                  <span className='absolute top-3 right-4 cursor-pointer text-gray-700' onClick={() => setShow({ ...show, pass: !show.pass })}>
+                  <span className='absolute top-3 right-4 cursor-pointer text-green-500' onClick={() => setShow({ ...show, pass: !show.pass })}>
                     {show.pass ? <FaEye /> : <FaEyeSlash />}</span>
                 </div>
                 <div className="error ml-8">
@@ -128,7 +128,7 @@ export default function Register() {
                 <div className="input name flex items-center gap-x-3 relative">
                   <label className='' htmlFor="con-pass"><RiLockPasswordFill className='text-green-600' /></label>
                   <input className='outline-none rounded-md border-gray-400 bg-gray-100 w-full border-0 placeholder:text-blue-300 ' type={show.con_pass ? "text" : "password"} id='conf-pass' placeholder='Confirm Password' {...register("confirmPassword", { required: { value: true, message: "Password is required " }, minLength: { value: 8, message: "Password must have 8 characters" } })} />
-                  <span className='absolute top-3 right-4 cursor-pointer text-gray-700' onClick={() => setShow({ ...show, con_pass: !show.con_pass })}>
+                  <span className='absolute top-3 right-4 cursor-pointer text-green-500' onClick={() => setShow({ ...show, con_pass: !show.con_pass })}>
                     {show.con_pass ? <FaEye /> : <FaEyeSlash />}</span>
                 </div>
                 <div className="error ml-8">

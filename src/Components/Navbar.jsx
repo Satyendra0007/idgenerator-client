@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { ContextStore } from '../store/ContextStore'
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { PiSignOutBold } from "react-icons/pi";
 
 export default function Navbar() {
   const { isLoggedIn, userData } = useContext(ContextStore)
@@ -12,13 +14,23 @@ export default function Navbar() {
           <span className='text-blue-600'>Id</span>Generator
         </div>
       </Link>
-      <div className="buttons ">
+      <div className="buttons  flex items-center justify-center gap-2">
+
+        {(isLoggedIn && userData.isAdmin) &&
+          <Link to="/admin">
+            <button className='outline-none px-4 py-2 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg flex justify-center text-sm md:text-base items-center gap-2'>
+              <MdOutlineAdminPanelSettings className='text-2xl' />
+            </button>
+          </Link>
+        }
+
         {isLoggedIn ?
           <div className=''>
             <Link to="/signout">
               <button className='outline-none px-4 py-1.5 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg flex justify-center text-sm md:text-base items-center gap-2'>
-                <span>SignOut</span>
-                <img className='w-8 h-8 rounded-full shadow-xl' src={userData.image} alt="" />
+                {/* <span>SignOut</span> */}
+                <img className='w-7 h-7 rounded-full shadow-xl' src={userData.image} alt="" />
+                <PiSignOutBold className='text-2xl' />
               </button>
             </Link>
           </div>

@@ -8,6 +8,7 @@ import Footer from './Components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignOut from './Pages/SignOut'
 import Dashboard from './Pages/Dashboard'
+import Admin from './Pages/Admin'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signout" element={<SignOut />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
           <Footer />
         </BrowserRouter>
