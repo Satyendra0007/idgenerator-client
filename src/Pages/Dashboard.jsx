@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useRef } from 'react';
 import user from "../images/user.webp"
 import { useContext } from 'react'
 import { ContextStore } from '../store/ContextStore'
 import Card from '../Components/Card'
 import banner from "../images/banner.jpeg"
+import { CiSaveDown1 } from "react-icons/ci";
+import domtoimage from 'dom-to-image';
+
 
 export default function Dashboard() {
+
   const { userData } = useContext(ContextStore)
+  const cardRef = useRef(null);
+
+  const handleDownload = () => {
+    domtoimage.toPng(cardRef.current, { bgcolor: '#fff', quality: 0.95 })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'demo.png';
+        link.click();
+      })
+      .catch((error) => {
+        console.error('Error generating image:', error);
+      });
+  };
+
+
   return (
     <div className='min-h-[83vh]'>
       <div className="info">
@@ -28,8 +48,16 @@ export default function Dashboard() {
       </div>
       <div className="card px-2">
         <h1 className='text-2xl font-bold text-center my-8 text-gray-800'>Your IdCard </h1>
-        <div className="card flex justify-center py-10">
-          <Card {...userData} />
+        <div className="button flex justify-center">
+          <button className='flex justify-center items-center gap-1 text-lg py-2 px-20 bg-gradient-to-r from-blue-400 to bg-orange-500 text-white rounded-lg shadow-lg hover:scale-105 transition-all ease-in-out duration-200 ' onClick={handleDownload}>
+            <span>Dawnload</span>
+            <CiSaveDown1 />
+          </button>
+        </div>
+        <div className="card  flex justify-center py-10">
+          <div ref={cardRef} className="card rounded-xl">
+            <Card  {...userData} />
+          </div>
         </div>
       </div>
     </div>

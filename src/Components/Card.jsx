@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import logo from "../images/logo.svg"
 import user from '../images/user.webp'
 
+
 export default function Card({ image, name, userId, phone, course }) {
+  
   return (
     <div className='card flex items-center gap-4 h-64 p-4 bg-gradient-to-r from-blue-400 to-orange-300 md:w-[32rem] rounded-xl shadow-2xl '>
       <div className="image rounded-full w-[40%]">
