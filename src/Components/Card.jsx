@@ -4,11 +4,11 @@ import user from '../images/user.webp'
 
 
 export default function Card({ image, name, userId, phone, course }) {
-  
+
   return (
     <div className='card flex items-center gap-4 h-64 p-4 bg-gradient-to-r from-blue-400 to-orange-300 md:w-[32rem] rounded-xl shadow-2xl '>
-      <div className="image rounded-full w-[40%]">
-        <img className='h-full rounded-full' src={image ? image : user} alt="" />
+      <div className="image  rounded-full w-[40%]">
+        <img className=' w-30 h-30 md:h-44 md:w-44  rounded-full' src={image ? image : user} alt="" />
       </div>
       <div className="desc h-full w-[60%]">
         <div className="top h-1/2 flex flex-col justify-between ">
